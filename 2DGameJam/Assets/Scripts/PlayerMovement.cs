@@ -12,9 +12,28 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 pushSpeed;
     public Vector2 pushSpeedVertical;
 
+    public Animator animator;
+
     void Update()
     {
         verticalMovement = Input.GetAxisRaw("Vertical");
+
+        //animacion
+        if (verticalMovement >= 1)
+        {
+            animator.SetBool("SeMueveHaciaArriba", true);
+        }
+        if (verticalMovement <= -1)
+        {
+            animator.SetBool("SeMueveHaciaAbajo", true);
+        }
+        if (verticalMovement == 0)
+        {
+            animator.SetBool("SeMueveHaciaArriba", false);
+            animator.SetBool("SeMueveHaciaAbajo", false);
+        }
+
+
     }
 
     private void FixedUpdate()
@@ -26,9 +45,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(pushSpeedVertical * Time.deltaTime, 0);
         }
-        else if (verticalMovement <= -1)
+        if (verticalMovement <= -1)
         {
             rb.AddForce(-pushSpeedVertical * Time.deltaTime, 0);
         }
+      
     }
 }
