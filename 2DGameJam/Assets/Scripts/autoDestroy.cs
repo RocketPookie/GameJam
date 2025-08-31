@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class autoDestroy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int tiempoParaDestruirse = 5;
+    private void Start()
+    {
+        StartCoroutine(DestroyTime());
+    }
     public void kaboom()
     {
         Destroy(gameObject);
+    }
+
+    public IEnumerator DestroyTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(tiempoParaDestruirse);
+            Destroy(gameObject);
+        }
     }
 }

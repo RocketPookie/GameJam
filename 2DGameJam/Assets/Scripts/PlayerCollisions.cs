@@ -12,7 +12,7 @@ public class PlayerCollisions : MonoBehaviour
         //todo: para jego , guardar, abrir ui
 
         PanelUi.SetActive(true);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

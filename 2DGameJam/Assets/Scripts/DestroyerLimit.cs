@@ -7,7 +7,10 @@ public class DestroyerLimit : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("colisiona");
+        if (collision.tag == "Enemy")
+        {
+            Debug.Log("colisiona");
+        }
 
     }
 }
