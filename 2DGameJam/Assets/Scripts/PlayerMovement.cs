@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.GameCenter;
 
 public class PlayerMovement : MonoBehaviour
 {
     float verticalMovement = 0f;
+    float startSpacePress = 0f;
+
+    public GameObject gameManager;
 
     public Rigidbody2D rb;
 
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         verticalMovement = Input.GetAxisRaw("Vertical");
+        startSpacePress = Input.GetAxisRaw("Submit");
 
         //animacion
         if (verticalMovement >= 1)
@@ -31,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("SeMueveHaciaArriba", false);
             animator.SetBool("SeMueveHaciaAbajo", false);
+        }
+        //pause
+        if (startSpacePress >= 1)
+        {
+            gameManager.SendMessage("pause");
         }
 
 

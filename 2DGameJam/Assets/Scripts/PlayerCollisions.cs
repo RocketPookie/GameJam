@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerCollisions : MonoBehaviour
 {
     public GameObject PanelUi;
+    public GameObject gameManager;
 
     private int scorePoint = 0;
     public Text scoreText;
@@ -29,5 +30,11 @@ public class PlayerCollisions : MonoBehaviour
             collision.SendMessage("kaboom");
             scoreText.text = scorePoint.ToString();
         }
+
+        if (scorePoint == 10)
+        {
+            gameManager.SendMessage("endGame");
+        }
+
     }
 }
