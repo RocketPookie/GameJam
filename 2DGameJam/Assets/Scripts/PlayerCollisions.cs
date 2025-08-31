@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollisions : MonoBehaviour
 {
     public GameObject PanelUi;
 
     private int scorePoint = 0;
+    public Text scoreText;
     void muerte()
     {
         //todo: para jego , guardar, abrir ui
@@ -25,6 +27,7 @@ public class PlayerCollisions : MonoBehaviour
             scorePoint += 1;
             Debug.Log(scorePoint);
             collision.SendMessage("kaboom");
+            scoreText.text = scorePoint.ToString();
         }
     }
 }
